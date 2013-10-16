@@ -9,7 +9,7 @@ function onYouTubeApiLoad() {
 function search() {
 	var q = $('#query').val();
 	var request = gapi.client.youtube.search.list({
-	    q; q,
+	    q: q,
 	    part: 'snippet'
 	});
 
