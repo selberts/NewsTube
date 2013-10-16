@@ -1,5 +1,6 @@
 <html>
 	<head>
+    	<script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
 	</head>
 	<body>
 		<div class="title">NewsTube</div>
@@ -9,16 +10,11 @@
 			<img src="assets/videographerColor.png"/>
 		</div>
 
-
 		<div id="buttons">
 	      <label> <input id="query" class="search" type="text"/>
-	      	<btn class="btn searchBtn" id="search-button" disabled onclick="search()">Go!</btn></label>
+	      	<btn class="btn searchBtn" id="search-button"  onclick="search()">Go!</btn></label>
 	    </div>
 	    <div id="search-container">
 	    </div>
-	    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
-	    <script src="auth.js"></script>
-	    <script src="search.js"></script>
-	    <script src="https://apis.google.com/js/client.js?onload=googleApiClientReady"></script>
 	</body>
 </html>
