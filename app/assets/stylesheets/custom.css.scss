@@ -12,23 +12,54 @@ body {
 	color: white;
 }
 
+.header {
+	margin: 50px 0px;
+}
+
 .title {
-	font-size: 140px;
-	margin-top:80px;
-	width:100%;
-	line-height: 140px;
+	font-size: 45px;
+	color: white;
+}
+
+.title:hover {
+	text-decoration: none;
+	color: white;
+}
+
+.headerImg {
+	margin: 15px 10px 25px 10px;
+	height:90px;
 }
 
 .search {
-	margin-top:30px;
-	width:375px;
+	width:280px;
+	margin-right: 10px;
 }
 
-.searchBtn {
-	margin-left: 8px;
-	margin-top: 20px;
+.category {
+	border-top: solid 4px;
+	border-color: black;
+	background: #222;
+	display: block;
+	font-size: 20px;
+	padding: 15px 0px;
 }
 
-img {
-	height:125px;
+.category:hover {
+	cursor:pointer;
+	background: #333;
+}
+
+.videoList{
+	
+	height:200px;	
+	display:none;
+}
+
+.triangle {
+    width: 0;
+    height: 0;
+    border: solid 20px;
+    display: inline-block;
+    border-color: #222 transparent transparent transparent;
 }
