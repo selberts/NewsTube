@@ -28,7 +28,10 @@ function search(){
 function onSearchResponse(response) {
    var str = JSON.stringify(response, '', 2);
    var idlist = getVideoId(str);
-  $('#prominent').html('<pre>' + idlist + '</pre>');
+  $('#prominent').html(idlist);
+
+  //will probably change this
+  openProminent();
 }
 //return a list of videoId separated by a comma
 
@@ -37,7 +40,7 @@ function getVideoId(str){
    while(str.search("videoId")!=-1){
            var start = str.search("videoId");
            var id =  str.substring(start+11,start+22);
-           IDlist =  IDlist.concat(id,",");
+           IDlist =  IDlist.concat("<div class='vid'><a href='http://www.youtube.com/watch?v=",id,"'>Video</a></div>");
            str = str.slice(start+22);
    }
    

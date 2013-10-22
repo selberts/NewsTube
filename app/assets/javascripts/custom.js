@@ -19,3 +19,12 @@ function toggleCategory(category)
 
 	$('#currentCategory').val(category);
 }
+
+function openProminent()
+{
+	var currentCategory = $('#currentCategory').val();
+	if (currentCategory != '#prominentWrapper')
+	{
+		toggleCategory('#prominentWrapper');
+	}
+}

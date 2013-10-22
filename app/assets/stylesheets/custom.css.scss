@@ -6,6 +6,7 @@
 }
 
 body { 
+	min-width: 560px;
 	font-family: 'StMarie-Thin';
 	text-align: center;
 	background-color: black;
@@ -37,9 +38,7 @@ body {
 }
 
 .category {
-	border-top: solid 4px;
-	border-color: black;
-	background: #222;
+	border-color: #222;
 	display: block;
 	font-size: 20px;
 	padding: 15px 0px;
@@ -47,12 +46,19 @@ body {
 
 .category:hover {
 	cursor:pointer;
-	background: #333;
+	color: #ccc;
+	font-weight: bold;
 }
 
 .videoList{
 	height:200px;	
 	display:none;
+	background: #222;
+}
+
+.vid {
+	width: 100px;
+	display:inline-block;
 }
 
 .triangle {
@@ -60,5 +66,5 @@ body {
     height: 0;
     border: solid 20px;
     display: inline-block;
-    border-color: #222 transparent transparent transparent;
+    border-color: black transparent transparent transparent;
 }
