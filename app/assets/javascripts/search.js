@@ -26,10 +26,11 @@ function search(){
 
 
 function onSearchResponse(response) {
-   var str = JSON.stringify(response, '');
-   alert(str);
+   var str = JSON.stringify(response, '', 2);
    var idlist = getVideoId(str);
-  $('#prominent').html(str);
+   var middle = Math.floor(idlist.length/2);
+   var newlist = idlist.substr(0,middle);
+  $('#prominent').html(newlist);
   //will probably change this
   openProminent();
 }
@@ -41,7 +42,7 @@ function getVideoId(str){
            var start = str.search("videoId");
            var id =  str.substring(start+11,start+22);
            alert(id);
-           IDlist =  IDlist.concat("<div class='vid'><a href='http://www.youtube.com/watch?v=",id,"'><img src='http://img.youtube.com/vi/",id,"/hqdefault.jpg' style='width:200px !important; height:150px !important;'></a></div>");
+           IDlist =  IDlist.concat("<div class='vid'><a href='http://www.youtube.com/watch?v=",id,"'><img src='http://img.youtube.com/vi/",id,"/hqdefault.jpg'></a></div>");
            str = str.slice(start+22);
    }
    
