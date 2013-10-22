@@ -10,8 +10,8 @@ function search(){
    var q = $('#query').val();
    var requestCNN = gapi.client.youtube.search.list({
            q: q,
-   channelId: 'UCupvZG-5ko_eiXAupbDfxWw',
-           video: 'CaptionclosedCaption',
+           channelId: 'UCupvZG-5ko_eiXAupbDfxWw',
+           //video: 'CaptionclosedCaption',
            part: 'snippet'
    });
    var requestNBC = gapi.client.youtube.search.list({
@@ -26,11 +26,10 @@ function search(){
 
 
 function onSearchResponse(response) {
-   var str = JSON.stringify(response, '', 1);
+   var str = JSON.stringify(response, '', 2);
    alert(str);
    var idlist = getVideoId(str);
   $('#prominent').html(str);
-
   //will probably change this
   openProminent();
 }
