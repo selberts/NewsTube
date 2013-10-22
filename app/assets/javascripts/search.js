@@ -20,7 +20,6 @@ function search(){
            video: 'CaptionclosedCaption',
            part: 'snippet'
    });
-   alert(requestCNN);
    requestCNN.execute(onSearchResponse);
    requestNBC.execute(onSearchResponse);
 }
@@ -28,8 +27,8 @@ function search(){
 
 function onSearchResponse(response) {
    var str = JSON.stringify(response, '', 2);
+   alert(str);
    var idlist = getVideoId(str);
-   alert(idlist);
   $('#prominent').html(idlist);
 
   //will probably change this
@@ -42,7 +41,8 @@ function getVideoId(str){
    while(str.search("videoId")!=-1){
            var start = str.search("videoId");
            var id =  str.substring(start+11,start+22);
-           IDlist =  IDlist.concat("<div class='vid'><a href='http://www.youtube.com/watch?v=",id,"'><img src='http://img.youtube.com/vi/",id,"/hqdefault.jpg' width='200' height='150'</a></div>");
+           alert(id);
+           IDlist =  IDlist.concat("<div class='vid'><a href='http://www.youtube.com/watch?v=",id,"'><img src='http://img.youtube.com/vi/",id,"/hqdefault.jpg' style='width:200px !important; height:150px !important;'></a></div>");
            str = str.slice(start+22);
    }
    
