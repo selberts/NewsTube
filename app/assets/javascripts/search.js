@@ -26,7 +26,7 @@ function search(){
 
 
 function onSearchResponse(response) {
-   var str = JSON.stringify(response, '', 2);
+   var str = JSON.stringify(response, '', 1);
    alert(str);
    var idlist = getVideoId(str);
   $('#prominent').html(str);
