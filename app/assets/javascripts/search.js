@@ -11,8 +11,8 @@ function search(){
    var requestCNN = gapi.client.youtube.search.list({
            q: q,
            channelId: 'UCupvZG-5ko_eiXAupbDfxWw',
-           //video: 'CaptionclosedCaption',
-           part: 'snippet'
+           video: 'CaptionclosedCaption',
+           part: 'id'
    });
    var requestNBC = gapi.client.youtube.search.list({
            q: q,
