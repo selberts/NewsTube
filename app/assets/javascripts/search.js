@@ -29,7 +29,7 @@ function onSearchResponse(response) {
    var str = JSON.stringify(response, '', 2);
    alert(str);
    var idlist = getVideoId(str);
-  $('#prominent').html(idlist);
+  $('#prominent').html(str);
 
   //will probably change this
   openProminent();
