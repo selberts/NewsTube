@@ -12,7 +12,7 @@ function search(){
            q: q,
            channelId: 'UCupvZG-5ko_eiXAupbDfxWw',
            video: 'CaptionclosedCaption',
-           part: 'id'
+           part: 'snippet'
    });
    var requestNBC = gapi.client.youtube.search.list({
            q: q,
@@ -26,7 +26,7 @@ function search(){
 
 
 function onSearchResponse(response) {
-   var str = JSON.stringify(response, '', 2);
+   var str = JSON.stringify(response, '');
    alert(str);
    var idlist = getVideoId(str);
   $('#prominent').html(str);
