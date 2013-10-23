@@ -30,11 +30,12 @@ function onSearchResponse(response) {
    var idlist = getVideoId(str);
    var middle = Math.floor(idlist.length/2);
    var newlist = idlist.substr(0,middle);
-  $('#prominent').html(newlist);
+  $('#prominent').html(str);
   //will probably change this
   openProminent();
 }
 //return a list of videoId separated by a comma
+
 
 function getVideoId(str){
    var IDlist=""; 
