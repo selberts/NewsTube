@@ -41,7 +41,7 @@ function getVideoId(str){
    while(str.search("videoId")!=-1){
            var start = str.search("videoId");
            var id =  str.substring(start+11,start+22);
-           IDlist =  IDlist.concat("<div class='vid'><a href='http://www.youtube.com/watch?v=",id,"'><img src='http://img.youtube.com/vi/",id,"/hqdefault.jpg'></a></div>");
+           IDlist =  IDlist.concat("<div class='vid'><a href='http://www.youtube.com/watch?v=",id,"'><img class='vidImg' src='http://img.youtube.com/vi/",id,"/hqdefault.jpg'/></a></div>");
            str = str.slice(start+22);
    }
    

@@ -7,17 +7,25 @@ function init()
 	});
 }
 
-function toggleCategory(category)
+function toggleCategory(newCategory)
 {
 	var currentCategory = $('#currentCategory').val();
-	if (currentCategory != '' && category != currentCategory)
+	
+	if (currentCategory == newCategory)
 	{
 		$(currentCategory).slideUp('slow');
+		$('#currentCategory').val('');
 	}
+	else
+	{
+		if (currentCategory != '')
+		{
+			$(currentCategory).slideUp('slow');
+		}
 
-	$(category).slideToggle('slow');
-
-	$('#currentCategory').val(category);
+		$(newCategory).slideDown('slow');
+		$('#currentCategory').val(newCategory);
+	}
 }
 
 function openProminent()

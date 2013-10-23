@@ -51,13 +51,15 @@ body {
 }
 
 .videoList{
-	height:200px;	
+	height:210px;	
 	display:none;
 	background: #222;
+	min-width: 1000px;
 }
 
 .vid {
-	width: 100px;
+	width: 160px;
+	margin: 0px 20px;
 	display:inline-block;
 }
 
