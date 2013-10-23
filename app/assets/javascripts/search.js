@@ -47,9 +47,10 @@ function getVideoId(str){
    while(str.search("videoId")!=-1){
            var start = str.search("videoId");
            var id =  str.substring(start+11,start+22);
+           var slice = str.search('description');
            var title= getTitle(str);
            IDlist =  IDlist.concat(displayVideo(id,title));
-           str = str.slice(start+22);
+           str = str.slice(slice);
    }
    
    return IDlist
