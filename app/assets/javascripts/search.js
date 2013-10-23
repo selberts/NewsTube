@@ -30,7 +30,7 @@ function onSearchResponse(response) {
    var idlist = getVideoId(str);
    var middle = Math.floor(idlist.length/2);
    var newlist = idlist.substr(0,middle);
-  $('#prominent').html(idlist);
+  $('#prominent').html(newlist);
   //will probably change this
   openProminent();
 }
@@ -38,7 +38,7 @@ function onSearchResponse(response) {
 function getTitle(str){
   var start = str.search('title":');
   var end = str.search('description');
-  var title= str.substring(start+10,end-4);
+  var title= str.substring(start+9,end-5);
   return title
 }
 
