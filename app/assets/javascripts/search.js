@@ -45,14 +45,15 @@ function getTitle(str){
 function getVideoId(str){
    var IDlist=""; 
    while(str.search("videoId")!=-1){
+           var slice = str.search("thumbnails");
            var start = str.search("videoId");
            var id =  str.substring(start+11,start+22);
            var title= getTitle(str);
-           var end = str.search("thumbnails");
            alert(start);
-           alert(end);
+           alert(slice);
+
            IDlist =  IDlist.concat(displayVideo(id,title));
-           str = str.slice(start+400);
+           str=str.slice(slice);
    }
    
    return IDlist
