@@ -38,7 +38,7 @@ function onSearchResponse(response) {
 function getTitle(str){
   var start = str.search('title":');
   var end = str.search('description');
-  var title= str.substring(start+9,end-5);
+  var title= str.substring(start+9,end-7);
   return title
 }
 
@@ -49,9 +49,6 @@ function getVideoId(str){
            var start = str.search("videoId");
            var id =  str.substring(start+11,start+22);
            var title= getTitle(str);
-           alert(start);
-           alert(slice);
-
            IDlist =  IDlist.concat(displayVideo(id,title));
            str=str.slice(slice+10);
    }
