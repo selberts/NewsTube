@@ -53,7 +53,7 @@ function getVideoId(str){
            alert(slice);
 
            IDlist =  IDlist.concat(displayVideo(id,title));
-           str=str.slice(slice);
+           str=str.slice(slice+10);
    }
    
    return IDlist
