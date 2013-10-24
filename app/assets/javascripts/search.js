@@ -12,55 +12,41 @@ function search(){
            q: q,
            channelId: 'UCupvZG-5ko_eiXAupbDfxWw',
            video: 'CaptionclosedCaption',
-           part: 'snippet'
+           part: 'snippet',
+           maxResults: 15
    });
-   var requestNBC = gapi.client.youtube.search.list({
-           q: q,
-   channelId: 'UCeY0bbntWzzVIaj2z3QigXg',
-           video: 'CaptionclosedCaption',
-           part: 'snippet'
-   });
-   requestCNN.execute(onSearchResponse);
-   requestNBC.execute(onSearchResponse);
-}
 
+   requestCNN.execute(onSearchResponse);
+}
 
 function onSearchResponse(response) {
-   var str = JSON.stringify(response, '', 2);
-   var idlist = getVideoId(str);
-   var middle = Math.floor(idlist.length/2);
-   var newlist = idlist.substr(0,middle);
-  $('#prominent').html(newlist);
-  //will probably change this
-  openProminent();
-}
-//return a list of videoId separated by a comma
-function getTitle(str){
-  var start = str.search('title":');
-  var end = str.search('description');
-  var title= str.substring(start+9,end-7);
-  return title
+  var videoList = '';
+
+  $.each(response.items, function(index, video)
+  {
+    var date = new Date(video.snippet.publishedAt);
+      videoList =  videoList.concat(
+        displayVideo( video.snippet.channelTitle,
+                      date.toDateString(),
+                      video.id.videoId,
+                      video.snippet.thumbnails.medium.url,
+                      video.snippet.title));
+  });
+
+  $('#prominent').html(videoList);
+
+  if ($('#currentCategory').val() == '')
+  {
+    openProminent();
+  }
 }
 
-function getVideoId(str){
-   var IDlist=""; 
-   while(str.search("videoId")!=-1){
-           var slice = str.search("thumbnails");
-           var start = str.search("videoId");
-           var id =  str.substring(start+11,start+22);
-           var title= getTitle(str);
-           IDlist =  IDlist.concat(displayVideo(id,title));
-           str=str.slice(slice+10);
-   }
-   
-   return IDlist
-}
-
-function displayVideo(id, title)
+function displayVideo(channel, time, id, imgUrl, title)
 {
- return "<div class='vid'>" +
+ return "<div class='vid'>" + 
+           "<span style='float:left'>" + channel + "</span><span style='float:right'>" + time + "</span>" +
            "<a href='http://www.youtube.com/watch?v=" + id + "'>" +
-             "<img class='vidImg' src='http://img.youtube.com/vi/" + id + "/hqdefault.jpg'/>" +
+             "<img src='" + imgUrl + "'/>" +
            "</a>" +
            title +
          "</div>";
