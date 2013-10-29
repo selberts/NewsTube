@@ -42,7 +42,7 @@ function onSearchResponse(response) {
                       video.snippet.thumbnails.medium.url,
                       video.snippet.title));
   });
-  return videoList
+  return videoList;
   // $('#prominent').html(videoList);
   /*
   if ($('#currentCategory').val() == '')
