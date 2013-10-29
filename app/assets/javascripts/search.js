@@ -19,12 +19,11 @@ function search(){
    var dq = q.concat(" documentary");
    var requestDocumentary = gapi.client.youtube.search.list({
            q: dq,
-           videoDuration: 'long',
            part: 'snippet',
            maxResults: 15
   });
 
-   requestCNN.execute(onSearchResponse);
+   // requestCNN.execute(onSearchResponse);
    requestDocumentary.execute(onSearchResponse);
 }
 
