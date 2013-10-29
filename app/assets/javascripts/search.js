@@ -16,10 +16,19 @@ function search(){
            maxResults: 15
    });
 
-   requestCNN.execute(onSearchResponse);
+   dq = strcat(q,' documentary');
+   var requestDocumentary = gapi.client.youtube.search.list({
+           q: dq,
+           videoDuration: 'long';
+           part: 'snippet'
+           maxResults: 15
+  }
+
+   onSearchResponse(requestCNN,1));
+   onSearchResponse(requestDocumentary,2));
 }
 
-function onSearchResponse(response) {
+function onSearchResponse(response, num) {
   var videoList = '';
 
   $.each(response.items, function(index, video)
@@ -32,8 +41,12 @@ function onSearchResponse(response) {
                       video.snippet.thumbnails.medium.url,
                       video.snippet.title));
   });
-
-  $('#prominent').html(videoList);
+  if (num==1) {
+    $('#prominent').html(videoList);
+  }
+  else if(num==2){
+    $('#documentary').html(videoList);
+  }
 
   if ($('#currentCategory').val() == '')
   {
