@@ -12,7 +12,8 @@ function search(){
    var channelList = ['UCBi2mrWuNuyYy4gbM6fU18Q',//ABCNews
                       'UCupvZG-5ko_eiXAupbDfxWw',//CNN
                       'UCqnbDFdCpuN8CMEg0VuEBqA',//NYTimes
-                      'UCrtNwz62WKCglCux1nc2OgA'];//RT
+                      'UCrtNwz62WKCglCux1nc2OgA',//RT
+                      'UC52X5wxOL_s5yw0dQk7NtgA'];//AP
    searchMultipleChannels(channelList, q, '#prominent');
 
    var dq = q.concat(" documentary");
