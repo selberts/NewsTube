@@ -8,14 +8,12 @@ function onYouTubeApiLoad() {
 
 function search(){
    var q = $('#query').val();
-   var requestCNN = gapi.client.youtube.search.list({
-           q: q,
-           channelId: 'UCupvZG-5ko_eiXAupbDfxWw',
-           video: 'CaptionclosedCaption',
-           part: 'snippet',
-           order: 'date',
-           maxResults: 15
-   });
+
+   var channelList = ['UCBi2mrWuNuyYy4gbM6fU18Q',//ABCNews
+                      'UCupvZG-5ko_eiXAupbDfxWw',//CNN
+                      'UCqnbDFdCpuN8CMEg0VuEBqA',//NYTimes
+                      'UCrtNwz62WKCglCux1nc2OgA'];//RT
+   searchMultipleChannels(channelList, q, '#prominent');
 
    var dq = q.concat(" documentary");
    var requestDocumentary = gapi.client.youtube.search.list({
@@ -24,21 +22,49 @@ function search(){
            maxResults: 15
   });
 
-  requestCNN.execute(function(response) {
-    $('#prominent').html(parseResponse(response));
-  });
-
   requestDocumentary.execute(function(response) {
-    $('#documentary').html(parseResponse(response));
+    $('#documentary').html(parseResponse(response.items));
   });
 
   openCategories();
 }
 
-function parseResponse(response) {
+function searchMultipleChannels(channelList, q, category) {
+  searchMultipleChannelsRecursive(channelList, q, category, []);
+}
+
+function searchMultipleChannelsRecursive(channelList, q, category, videoList) {
+  if (channelList.length < 1)
+  {
+    videoList.sort(function(a,b){
+      a = new Date(a.snippet.publishedAt);
+      b = new Date(b.snippet.publishedAt);
+      return b-a;
+    });
+
+    $(category).html(parseResponse(videoList));
+  } else {  
+     var id = channelList.pop();
+     var nextRequest = gapi.client.youtube.search.list({
+       q: q,
+       channelId: id,
+       part: 'snippet',
+       order: 'date',
+       maxResults: 15});
+
+    nextRequest.execute(function(response) {
+      if (response.pageInfo.totalResults > 0) {
+        $.merge(videoList, response.items);
+      }
+      searchMultipleChannelsRecursive(channelList, q, category, videoList);
+    });
+  }
+}
+
+function parseResponse(items) {
   var videoList = '';
 
-  $.each(response.items, function(index, video)
+  $.each(items, function(index, video)
   {
     var date = new Date(video.snippet.publishedAt);
       videoList =  videoList.concat(
