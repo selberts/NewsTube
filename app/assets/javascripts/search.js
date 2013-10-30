@@ -23,7 +23,8 @@ function search(){
            maxResults: 15
   });
 
-  requestCNN.execute(onSearchResponse);
+  var cnn = requestCNN.execute(onSearchResponse);
+  alert(cnn);
  // requestDocumentary.execute(onSearchResponse);
 }
 
@@ -40,13 +41,14 @@ function onSearchResponse(response) {
                       video.snippet.thumbnails.medium.url,
                       video.snippet.title));
   });
-
+  return videoList;
+  /*
   $('#prominent').html(videoList);
 
   if ($('#currentCategory').val() == '')
   {
     openProminent();
-  }
+  }*/
 }
 
 function displayVideo(channel, time, id, imgUrl, title)
