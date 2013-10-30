@@ -13,6 +13,7 @@ function search(){
            channelId: 'UCupvZG-5ko_eiXAupbDfxWw',
            video: 'CaptionclosedCaption',
            part: 'snippet',
+           order: 'date',
            maxResults: 15
    });
 
@@ -22,11 +23,19 @@ function search(){
            part: 'snippet',
            maxResults: 15
   });
-  requestCNN.execute(onSearchResponse);
-//  requestDocumentary.execute(onSearchResponse);
+
+  requestCNN.execute(function(response) {
+    $('#prominent').html(parseResponse(response));
+  });
+
+  requestDocumentary.execute(function(response) {
+    $('#documentary').html(parseResponse(response));
+  });
+
+  openCategories();
 }
 
-function onSearchResponse(response) {
+function parseResponse(response) {
   var videoList = '';
 
   $.each(response.items, function(index, video)
@@ -40,12 +49,7 @@ function onSearchResponse(response) {
                       video.snippet.title));
   });
   
-  $('#prominent').html(videoList);
-
-  if ($('#currentCategory').val() == '')
-  {
-    openProminent();
-  }
+  return videoList;
 }
 
 function displayVideo(channel, time, id, imgUrl, title)

@@ -6,7 +6,6 @@
 }
 
 body { 
-	min-width: 560px;
 	font-family: 'StMarie-Thin';
 	text-align: center;
 	background-color: black;
@@ -14,11 +13,13 @@ body {
 }
 
 .header {
-	margin: 50px 0px;
+	margin-top: 50px;
+	margin-bottom: 30px;
+	font-size: 45px;
+	min-width: 500px;
 }
 
 .title {
-	font-size: 45px;
 	color: white;
 }
 
@@ -28,8 +29,8 @@ body {
 }
 
 .headerImg {
-	margin: 15px 10px 25px 10px;
-	height:90px;
+	margin: 25px 5px 25px 5px;
+	width: 150px;
 }
 
 .search {
@@ -53,6 +54,10 @@ body {
 .videoList{
 	height:225px;	
 	white-space: nowrap;
+}
+
+.categories{
+	display:none;
 }
 
 .videoListWrapper {

@@ -9,30 +9,13 @@ function init()
 
 function toggleCategory(newCategory)
 {
-	var currentCategory = $('#currentCategory').val();
-	
-	if (currentCategory == newCategory)
-	{
-		$(currentCategory).slideUp('slow');
-		$('#currentCategory').val('');
-	}
-	else
-	{
-		if (currentCategory != '')
-		{
-			$(currentCategory).slideUp('slow');
-		}
-
-		$(newCategory).slideDown('slow');
-		$('#currentCategory').val(newCategory);
-	}
+	$(newCategory).slideToggle('slow');
 }
 
-function openProminent()
+function openCategories()
 {
-	var currentCategory = $('#currentCategory').val();
-	if (currentCategory != '#prominentWrapper')
+	if ($('#areCategoriesOpen').val() == '')
 	{
-		toggleCategory('#prominentWrapper');
+		$('.categories').fadeIn('slow');
 	}
 }
