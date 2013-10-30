@@ -22,12 +22,11 @@ function search(){
            part: 'snippet',
            maxResults: 15
   });
-   onSearchResponse(requestCNN,1)
-  // requestCNN.execute(onSearchResponse);
-  requestDocumentary.execute(onSearchResponse);
+  requestCNN.execute(onSearchResponse);
+//  requestDocumentary.execute(onSearchResponse);
 }
 
-function onSearchResponse(response,num) {
+function onSearchResponse(response) {
   var videoList = '';
 
   $.each(response.items, function(index, video)
@@ -40,14 +39,13 @@ function onSearchResponse(response,num) {
                       video.snippet.thumbnails.medium.url,
                       video.snippet.title));
   });
-  if(num==1){
+  
   $('#prominent').html(videoList);
 
   if ($('#currentCategory').val() == '')
   {
     openProminent();
   }
-}
 }
 
 function displayVideo(channel, time, id, imgUrl, title)
