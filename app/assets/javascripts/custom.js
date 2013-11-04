@@ -1,9 +1,9 @@
-function init()
-{
+function init() {
+
 	$("#query").keyup(function (e) {
-	    if (e.keyCode == 13) {
-	        search();
-	    }
+		if (e.keyCode == 13) {
+	    	search();
+		}
 	});
 }
 
@@ -19,12 +19,9 @@ function displayLoading(category)
 
 function openCategories()
 {
-	if ($('#areCategoriesOpen').val() == '')
-	{
-		$('.categories').fadeIn('slow');
+	$('.categories').fadeIn('slow');
 
-		$( ".header" ).animate({
-		    marginTop: 50
-		  }, 'slow');
-	}
+	$( ".header" ).animate({
+	    marginTop: 50
+	  }, 'slow');
 }

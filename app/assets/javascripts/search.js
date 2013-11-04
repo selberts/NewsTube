@@ -112,31 +112,51 @@ function displayVideos(items, category) {
   }
   else
   {
-    var videoList = '';
+    $('#' + category).html('');
 
     $.each(items, function(index, video)
     {
       var date = new Date(video.snippet.publishedAt);
-        videoList =  videoList.concat(
-          convertVideoInfoToHTML( video.snippet.channelTitle,
-                                  date.toDateString(),
-                                  video.id.videoId,
-                                  video.snippet.thumbnails.medium.url,
-                                  video.snippet.title));
+        displayVideo( video.snippet.channelTitle,
+                      date.toDateString(),
+                      video.id.videoId,
+                      video.snippet.thumbnails.medium.url,
+                      video.snippet.title,
+                      category);
     });
-
-    $('#' + category).html(videoList);
-    $('#' + category + 'Category').slideDown('slow');
   }
 }
 
-function convertVideoInfoToHTML(channel, time, id, imgUrl, title)
+function displayVideo(channel, time, videoId, imgUrl, title, category)
 {
- return "<div class='vid'>" + 
-           "<span style='float:left'>" + channel + "</span><span style='float:right'>" + time + "</span>" +
-           "<a href='http://www.youtube.com/watch?v=" + id + "'>" +
-             "<img src='" + imgUrl + "'/>" +
-           "</a>" +
-           title +
-         "</div>";
+  var video = $("<div>", {class: "vid"});
+  video.append($("<span>", {style: 'float:left', text: channel}));
+  video.append($("<span>", {style: 'float:right', text: time}));
+
+  var link = $("<a>", {href: "http://www.youtube.com/watch?v=" + videoId});
+  link.append($("<img>", {src: imgUrl}));
+  link.click(function() {
+    $.fancybox({
+        'padding'   : 0,
+        'autoScale'   : false,
+        'transitionIn'  : 'none',
+        'transitionOut' : 'none',
+        'title'     : this.title,
+        'width'   : 680,
+        'height'    : 495,
+        'href'      : this.href.replace(new RegExp("watch\\?v=", "i"), 'v/'),
+        'type'      : 'swf',
+        'swf'     : {
+            'wmode'    : 'transparent',
+            'allowfullscreen' : 'true'
+        }
+    });
+
+    return false;
+  });
+  
+  video.append(link);
+  video.append(title);
+
+  $('#' + category).append(video);
 }
