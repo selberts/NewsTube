@@ -57,7 +57,6 @@ function search(){
   displayLoading(category4);
   var search_value = encodeURLComponent(q);
   $.ajax({
-    alert("hi");
     url:'search_response.php?q='+ search_value,
     success:function(data){
       alert(data);
