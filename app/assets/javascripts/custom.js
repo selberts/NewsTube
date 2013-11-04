@@ -10,6 +10,7 @@ function init() {
 function toggleCategory(category)
 {
 	$('#' + category + 'Wrapper').slideToggle('slow');
+	$('#' + category + 'TriWrapper').slideToggle('slow');
 }
 
 function displayLoading(category)
