@@ -55,6 +55,13 @@ function search(){
   //Twitter
   var category4 = 'twitter';
   displayLoading(category4);
+  var search_value = encodeURLComponent(q);
+  $.ajax({
+    url:'search_response.php?q='+ search_value,
+    success:function(data){
+      alert(data);
+      }
+  })
   displayVideos([], category4);
 
   //HomeVideos
