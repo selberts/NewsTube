@@ -7,10 +7,10 @@ if(!empty($_GET['q'])){
 	require 'app_tokens.php';
 	require 'tmhOAuth.php';
 	$connection = new thmOauth(array(
-		'consumer_key' => tJO12Hz2jQGHYEZZNWuEg,
-		'consumer_secret' => u6izuQhp6e27MYAF8HeNMttZIClDlynD15nEUwrHSE,
-		'user_token' =>868988989-D6zjPwI04eoj6iJfPeOJ00a5D0wHnWYOcGB2lZgh,
-		'user_secret' => 2FeVYbJPU5cnM6CIZpnnHqfTegWkRRoHX9reg0wY5IOu7
+		'consumer_key' => 'tJO12Hz2jQGHYEZZNWuEg',
+		'consumer_secret' => 'u6izuQhp6e27MYAF8HeNMttZIClDlynD15nEUwrHSE',
+		'user_token' =>'868988989-D6zjPwI04eoj6iJfPeOJ00a5D0wHnWYOcGB2lZgh',
+		'user_secret' => '2FeVYbJPU5cnM6CIZpnnHqfTegWkRRoHX9reg0wY5IOu7'
 		));
 
 	$http_code = $connection->request('GET',$connection->url('1.1/search/tweets'), 
