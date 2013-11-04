@@ -9,13 +9,13 @@ function init() {
 
 function toggleCategory(category)
 {
-	$('#' + category + 'Wrapper').slideToggle('slow');
 	$('#' + category + 'TriWrapper').slideToggle('slow');
+	$('#' + category + 'Wrapper').slideToggle('slow');
 }
 
 function displayLoading(category)
 {
-	$('#' + category).html('<h4>Loading videos...</h4>');
+	$('#' + category).html('<h4>Loading videos...</h4><img style="margin-top:30px" src="assets/fancybox_loading.gif"/>');
 }
 
 function openCategories()
