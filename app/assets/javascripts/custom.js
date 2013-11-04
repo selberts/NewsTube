@@ -7,9 +7,14 @@ function init()
 	});
 }
 
-function toggleCategory(newCategory)
+function toggleCategory(category)
 {
-	$(newCategory).slideToggle('slow');
+	$('#' + category + 'Wrapper').slideToggle('slow');
+}
+
+function displayLoading(category)
+{
+	$('#' + category).html('<h4>Loading videos...</h4>');
 }
 
 function openCategories()
