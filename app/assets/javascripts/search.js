@@ -58,10 +58,10 @@ function search(){
   var search_value = encodeURLComponent(q);
   $.ajax({
     alert("hi");
-    url:'/search_response.php?q='+ search_value,
+    url:'search_response.php?q='+ search_value,
     success:function(data){
-      alert("data");
-      }
+      alert(data);
+    }
   })
   displayVideos([], category4);
 
