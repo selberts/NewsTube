@@ -17,5 +17,9 @@ function openCategories()
 	if ($('#areCategoriesOpen').val() == '')
 	{
 		$('.categories').fadeIn('slow');
+
+		$( ".header" ).animate({
+		    marginTop: 50
+		  }, 'slow');
 	}
 }

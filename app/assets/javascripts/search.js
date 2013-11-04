@@ -12,15 +12,29 @@ function search(){
    var channelList = ['UCBi2mrWuNuyYy4gbM6fU18Q',//ABCNews
                       'UCupvZG-5ko_eiXAupbDfxWw',//CNN
                       'UCqnbDFdCpuN8CMEg0VuEBqA',//NYTimes
-                      'UCrtNwz62WKCglCux1nc2OgA',//RT
-                      'UC52X5wxOL_s5yw0dQk7NtgA'];//AP
+                      'UC52X5wxOL_s5yw0dQk7NtgA',//AP
+                      'UCf4FYTsGFFcdc68AUPIU3RA',//Buzzfeed
+                      'UCGTUbwceCMibvpbd2NaIP7A',//WeatherChannel
+                      'UCK7tptUDHh-RYDsdxO1-5QQ',//WSJ
+                      'UCB0JdwmdBHeScbGK-q_EMSQ',//CBSNews
+                      'UCXIJgqnII2ZOINSWNOGFThA',//FoxNews
+                      'UCCElUBs4eYOlX6sc24EAsAw',//Reuters
+                      'UCHd62-u_v4DvJ8TCFtpi4GA',//WashingtonPost
+                      'UCHpw8xwDNhU9gdohEcJu4aA',//TheGuardian
+                      'UCNye-wNBqNL5ZzHSJj3l8Bg',//AlJazeeraEnglish
+                      'UCUMZ7gohGI9HcU9VNsr2FJQ',//Bloomberg
+                      'UCP6HGa63sBC7-KHtkme-p-g',//USAToday
+                      'UCb--64Gl51jIEVE-GLDAVTg',//CSPAN
+                      'UCPgLNge0xqQHWM5B5EFH9Cg',//telegraphtv
+                      'UCeY0bbntWzzVIaj2z3QigXg'//NBCNews
+                      ];
    searchMultipleChannels(channelList, q, '#prominent');
 
    var dq = q.concat(" documentary");
    var requestDocumentary = gapi.client.youtube.search.list({
            q: dq,
            part: 'snippet',
-           maxResults: 15
+           maxResults: 25
   });
 
   requestDocumentary.execute(function(response) {
@@ -43,6 +57,11 @@ function searchMultipleChannelsRecursive(channelList, q, category, videoList) {
       return b-a;
     });
 
+    if (videoList.length > 25)
+    {
+      videoList = videoList.slice(0,25);
+    }
+
     $(category).html(parseResponse(videoList));
   } else {  
      var id = channelList.pop();
@@ -50,13 +69,15 @@ function searchMultipleChannelsRecursive(channelList, q, category, videoList) {
        q: q,
        channelId: id,
        part: 'snippet',
+       fields: 'pageInfo/totalResults,items(id/videoId,snippet(publishedAt,channelTitle,thumbnails/medium/url,title))',
        order: 'date',
-       maxResults: 15});
+       maxResults: 10});
 
     nextRequest.execute(function(response) {
-      if (response.pageInfo.totalResults > 0) {
+      if (typeof response.items != "undefined") {
         $.merge(videoList, response.items);
       }
+
       searchMultipleChannelsRecursive(channelList, q, category, videoList);
     });
   }
