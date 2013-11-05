@@ -46,7 +46,7 @@ function search(){
   var requestDocumentary = gapi.client.youtube.search.list({
          q: dq,
          part: 'snippet',
-         maxResults: 25
+         maxResults: 50
   });
   requestDocumentary.execute(function(response) {
     displayVideos(response.items, category3);
@@ -78,21 +78,19 @@ function searchMultipleChannelsRecursive(channelList, q, category, videoList) {
       return b-a;
     });
 
-    if (videoList.length > 25)
-    {
-      videoList = videoList.slice(0,25);
-    }
-
     displayVideos(videoList, category)
 
   } else {  
      var id = channelList.pop();
+     var d = new Date();
+     d.setFullYear(d.getFullYear() - 1);
      var nextRequest = gapi.client.youtube.search.list({
        q: q,
        channelId: id,
        part: 'snippet',
        order: 'date',
-       maxResults: 10});
+       publishedAfter: d,
+       maxResults: 20});
 
     nextRequest.execute(function(response) {
       if (typeof response.items != "undefined") {
@@ -104,26 +102,45 @@ function searchMultipleChannelsRecursive(channelList, q, category, videoList) {
   }
 }
 
-function displayVideos(items, category) {
+function displayVideos(videoList, category) {
 
-  if (items == undefined || items.length == 0)
+  if (videoList == undefined || videoList.length == 0)
   {//No results
     $('#' + category).html('<h4>No videos found</h4>');
   }
   else
   {
     $('#' + category).html('');
+    displayNextVideos(videoList, category);
+  }
+}
 
-    $.each(items, function(index, video)
-    {
-      var date = new Date(video.snippet.publishedAt);
-        displayVideo( video.snippet.channelTitle,
-                      date.toDateString(),
-                      video.id.videoId,
-                      video.snippet.thumbnails.medium.url,
-                      video.snippet.title,
-                      category);
+function displayNextVideos(videoList, category)
+{
+  var numVideosToShow = 20;
+
+  $.each(videoList.slice(0,Math.min(numVideosToShow,videoList.length)), function(index, video)
+  {
+    var date = new Date(video.snippet.publishedAt);
+    displayVideo( video.snippet.channelTitle,
+                  date.toDateString(),
+                  video.id.videoId,
+                  video.snippet.thumbnails.medium.url,
+                  video.snippet.title,
+                  category);
+  });
+
+  if (videoList.length > numVideosToShow)
+  {
+
+    var moreBtn = $("<button>", {  
+                                  id: (category + 'MoreBtn'),
+                                  class: 'moreBtn'});
+    moreBtn.click(function(){
+      $('#' + category + 'MoreBtn').remove();
+      displayNextVideos(videoList.slice(numVideosToShow), category);
     });
+    $('#' + category).append(moreBtn);
   }
 }
 

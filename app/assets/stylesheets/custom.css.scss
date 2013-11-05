@@ -88,3 +88,17 @@ body {
 	display:inline-block;
 	white-space: normal;
 }
+
+.moreBtn {
+	background-image: url('plus1.png');
+	background-size: cover;
+	background-color: #222;
+	margin: 60px 20px 0px 10px;
+	width: 60px;
+	height: 60px;
+	border: none;
+}
+
+.moreBtn:hover {
+	background-image: url('plus2.png');
+}
