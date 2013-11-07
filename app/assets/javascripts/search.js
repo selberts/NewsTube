@@ -6,7 +6,7 @@ function onYouTubeApiLoad() {
    gapi.client.setApiKey('AIzaSyAFxd-832oMCK_33cqsRBBoh7EdYHzV2oM');
 }
 
-function search(prominentIds, localIds, advocacyIds){  
+function searchWithIds(prominentIds, localIds, advocacyIds){  
   var q = $('#query').val();
   var category = '';
 

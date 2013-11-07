@@ -1,8 +1,14 @@
 <html>
 	<head>
     	<script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
+    	<script type="text/javascript">
+    	function search()
+    	{
+    		searchWithIds(<%= @prominentIds.to_json.html_safe %>,<%= @localIds.to_json.html_safe %>,<%= @advocacyIds.to_json.html_safe %>);
+    	}
+    	</script>
 	</head>
-	<body onload="initSearch(<%= @prominentIds %>,<%= @localIds %>,<%= @advocacyIds %>)">
+	<body onload="initSearch()">
 		<div class="header">
 			<a class="title" href="home">NewsTube</a>
 			<div>
@@ -12,7 +18,7 @@
 			</div>
 			
 			<input id="query" class="search" type="text" placeholder="Search" />
-		    <btn id="searchBtn" class="btn">Go!</btn></label>
+		    <btn class="btn" onclick="search()">Go!</btn></label>
 		</div>
 		
 		<div class="categories">

@@ -1,13 +1,8 @@
-function initSearch(prominentIds, localIds, advocacyIds) {
-
+function initSearch() {
 	$("#query").keyup(function (e) {
 		if (e.keyCode == 13) {
-	    	search(prominentIds, localIds, advocacyIds);
+	    	search();
 		}
-	});
-
-	$("#searchBtn").click(function (e) {
-		search(prominentIds, localIds, advocacyIds);
 	});
 }
 
