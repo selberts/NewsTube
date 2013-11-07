@@ -2,7 +2,7 @@
 	<head>
     	<script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
 	</head>
-	<body onload="init()">
+	<body onload="initSearch(<%= @prominentIds %>,<%= @localIds %>,<%= @advocacyIds %>)">
 		<div class="header">
 			<a class="title" href="home">NewsTube</a>
 			<div>
@@ -12,9 +12,7 @@
 			</div>
 			
 			<input id="query" class="search" type="text" placeholder="Search" />
-		    <btn class="btn" onclick="search(<%= Channel.where(:category => 'prominent').pluck(:channelid) %>,
-		    								 <%= Channel.where(:category => 'local').pluck(:channelid) %>,
-		    								 <%= Channel.where(:category => 'advocacy').pluck(:channelid) %>)">Go!</btn></label>
+		    <btn id="searchBtn" class="btn">Go!</btn></label>
 		</div>
 		
 		<div class="categories">
