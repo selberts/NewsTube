@@ -1,5 +1,7 @@
 NewsTube::Application.routes.draw do
 
+  resources :channels
+
   root to: 'pages#home'
   get "home" => "pages#home"
   # The priority is based upon order of creation: first created -> highest priority.

@@ -12,7 +12,9 @@
 			</div>
 			
 			<input id="query" class="search" type="text" placeholder="Search" />
-		    <btn class="btn" onclick="search()">Go!</btn></label>
+		    <btn class="btn" onclick="search(<%= Channel.where(:category => 'prominent').pluck(:channelid) %>,
+		    								 <%= Channel.where(:category => 'local').pluck(:channelid) %>,
+		    								 <%= Channel.where(:category => 'advocacy').pluck(:channelid) %>)">Go!</btn></label>
 		</div>
 		
 		<div class="categories">
@@ -52,12 +54,12 @@
 				</div>
 			</div>
 
-			<div class="category" onclick="toggleCategory('homevideos')">HOME VIDEOS</div>
-			<div id="homevideosTriWrapper" class="triangleWrapper">
+			<div class="category" onclick="toggleCategory('advocacy')">ADVOCACY</div>
+			<div id="advocacyTriWrapper" class="triangleWrapper">
 				<div class="triangle"></div>
 			</div>
-			<div id="homevideosWrapper" class="videoListWrapper">
-				<div id="homevideos" class="videoList">
+			<div id="advocacyWrapper" class="videoListWrapper">
+				<div id="advocacy" class="videoList">
 				</div>
 			</div>
 		</div>

@@ -6,38 +6,19 @@ function onYouTubeApiLoad() {
    gapi.client.setApiKey('AIzaSyAFxd-832oMCK_33cqsRBBoh7EdYHzV2oM');
 }
 
-function search(){  
+function search(prominentIds, localIds, advocacyIds){  
   var q = $('#query').val();
   var category = '';
 
   //Prominent
   var category1 = 'prominent';
   displayLoading(category1);
-  var channelList = ['UCBi2mrWuNuyYy4gbM6fU18Q',//ABCNews
-                    'UCupvZG-5ko_eiXAupbDfxWw',//CNN
-                    'UCqnbDFdCpuN8CMEg0VuEBqA',//NYTimes
-                    'UC52X5wxOL_s5yw0dQk7NtgA',//AP
-                    'UCf4FYTsGFFcdc68AUPIU3RA',//Buzzfeed
-                    'UCGTUbwceCMibvpbd2NaIP7A',//WeatherChannel
-                    'UCK7tptUDHh-RYDsdxO1-5QQ',//WSJ
-                    'UCB0JdwmdBHeScbGK-q_EMSQ',//CBSNews
-                    'UCXIJgqnII2ZOINSWNOGFThA',//FoxNews
-                    'UCCElUBs4eYOlX6sc24EAsAw',//Reuters
-                    'UCHd62-u_v4DvJ8TCFtpi4GA',//WashingtonPost
-                    'UCHpw8xwDNhU9gdohEcJu4aA',//TheGuardian
-                    'UCNye-wNBqNL5ZzHSJj3l8Bg',//AlJazeeraEnglish
-                    'UCUMZ7gohGI9HcU9VNsr2FJQ',//Bloomberg
-                    'UCP6HGa63sBC7-KHtkme-p-g',//USAToday
-                    'UCb--64Gl51jIEVE-GLDAVTg',//CSPAN
-                    'UCPgLNge0xqQHWM5B5EFH9Cg',//telegraphtv
-                    'UCeY0bbntWzzVIaj2z3QigXg'//NBCNews
-                    ];
-  searchMultipleChannels(channelList, q, category1);
+  searchMultipleChannels(prominentIds, q, category1);
 
   //Local
   var category2 = 'local';
   displayLoading(category2);
-  displayVideos([], category2);
+  searchMultipleChannels(localIds, q, category2);
 
   //Documentary
   var category3 = 'documentary';
@@ -57,10 +38,10 @@ function search(){
   displayLoading(category4);
   displayVideos([], category4);
 
-  //HomeVideos
-  var category5 = 'homevideos';
+  //Advocacy
+  var category5 = 'advocacy';
   displayLoading(category5);
-  displayVideos([], category5);
+  searchMultipleChannels(advocacyIds, q, category5);
 
   openCategories();
 }

@@ -1,0 +1,5 @@
+
+
+rake db:migrate
+
+rails generate scaffold channel name:string category:string zipcode:string channelid:string
