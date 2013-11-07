@@ -22,6 +22,6 @@ function openCategories()
 	$('.categories').fadeIn('slow');
 
 	$( ".header" ).animate({
-	    marginTop: 50
+	    marginTop: 0
 	  }, 'slow');
 }
