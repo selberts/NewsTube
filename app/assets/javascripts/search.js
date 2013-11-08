@@ -149,7 +149,6 @@ function displayVideo(channel, time, videoId, imgUrl, title, category)
             'allowfullscreen' : 'true'
         }
     });
-
     return false;
   });
   
