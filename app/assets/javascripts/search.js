@@ -10,6 +10,7 @@ function searchWithIds(prominentIds, localIds, advocacyIds){
   var q = $('#query').val();
   var category = '';
 
+
   //Prominent
   var category1 = 'prominent';
   displayLoading(category1);
