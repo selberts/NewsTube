@@ -3,3 +3,5 @@
 rake db:migrate
 
 rails generate scaffold channel name:string category:string zipcode:string channelid:string
+
+rails generate scaffold zipcode code:string lat:string long:string

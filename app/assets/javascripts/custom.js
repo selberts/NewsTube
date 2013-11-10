@@ -4,6 +4,13 @@ function initSearch() {
 	    	search();
 		}
 	});
+
+	$.get( 'http://freegeoip.net/json', function( data ) {
+      if (data.zipcode != "undefined" && data.zipcode != "")
+      {
+      	$('#zipcode').val(data.zipcode);
+      }
+    });
 }
 
 function toggleCategory(category)

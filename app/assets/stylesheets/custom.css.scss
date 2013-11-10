@@ -120,6 +120,7 @@ td {
 #zipcode {
 	width: 65px;
 	margin-right: 8px;
+	margin-left: 10px;
 }
 
 .zipcodebtn {
@@ -130,4 +131,9 @@ td {
 .zipcodeform {
 	margin-top: -5px;
 	padding-bottom: 15px;
+}
+
+.zipcodelabel {
+	display: inline-block;
+	vertical-align: middle;
 }

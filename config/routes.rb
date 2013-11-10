@@ -1,10 +1,14 @@
 NewsTube::Application.routes.draw do
 
+  resources :zipcodes
+
   resources :channels
 
   root to: 'pages#home'
   get "home" => "pages#home"
   get "localchannels" => "pages#localchannels"
+  post "/pages/loaddb" => "zipcodes#loaddb"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
