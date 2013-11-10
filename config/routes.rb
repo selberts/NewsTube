@@ -4,6 +4,7 @@ NewsTube::Application.routes.draw do
 
   root to: 'pages#home'
   get "home" => "pages#home"
+  get "localchannels" => "pages#localchannels"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

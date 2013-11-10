@@ -6,7 +6,7 @@ function onYouTubeApiLoad() {
    gapi.client.setApiKey('AIzaSyAFxd-832oMCK_33cqsRBBoh7EdYHzV2oM');
 }
 
-function searchWithIds(prominentIds, localIds, advocacyIds){  
+function searchWithIds(prominentIds, advocacyIds){  
   var q = $('#query').val();
   var category = '';
 
@@ -16,9 +16,7 @@ function searchWithIds(prominentIds, localIds, advocacyIds){
   searchMultipleChannels(prominentIds, q, category1);
 
   //Local
-  var category2 = 'local';
-  displayLoading(category2);
-  searchMultipleChannels(localIds, q, category2);
+  searchLocal();
 
   //Documentary
   var category3 = 'documentary';
@@ -44,6 +42,17 @@ function searchWithIds(prominentIds, localIds, advocacyIds){
   searchMultipleChannels(advocacyIds, q, category5);
 
   openCategories();
+}
+
+function searchLocal()
+{
+  var q = $('#query').val();
+
+  var category2 = 'local';
+  displayLoading(category2);
+  $('#hiddenLocalHelper').load( "/localchannels?zipcode= #localChannelIds", function() {
+    searchMultipleChannels(JSON.parse($('#localChannelIds').html()), q, category2);
+  });
 }
 
 function searchMultipleChannels(channelList, q, category) {

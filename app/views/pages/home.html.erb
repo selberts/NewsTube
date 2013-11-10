@@ -4,7 +4,7 @@
     	<script type="text/javascript">
     	function search()
     	{
-    		searchWithIds(<%= @prominentIds.to_json.html_safe %>,<%= @localIds.to_json.html_safe %>,<%= @advocacyIds.to_json.html_safe %>);
+    		searchWithIds(<%= @prominentIds.to_json.html_safe %>, <%= @advocacyIds.to_json.html_safe %>);
     	}
     	</script>
 	</head>
@@ -38,6 +38,7 @@
 			<div id="localWrapper" class="videoListWrapper">
 				<div id="local" class="videoList">
 				</div>
+				<div id="hiddenLocalHelper" style="display:none"></div>
 			</div>
 
 			<div class="category" onclick="toggleCategory('documentary')">DOCUMENTARY</div>
