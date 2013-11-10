@@ -50,7 +50,7 @@ function searchLocal()
 
   var category2 = 'local';
   displayLoading(category2);
-  $('#hiddenLocalHelper').load( "/localchannels?zipcode= #localChannelIds", function() {
+  $('#hiddenLocalHelper').load( "/localchannels?zipcode=" + $('#zipcode').val() + " #localChannelIds", function() {
     searchMultipleChannels(JSON.parse($('#localChannelIds').html()), q, category2);
   });
 }
