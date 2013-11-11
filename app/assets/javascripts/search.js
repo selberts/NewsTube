@@ -11,6 +11,7 @@ function searchWithIds(prominentIds, advocacyIds){
   var category = '';
 
   //Prominent
+  
   var category1 = 'prominent';
   displayLoading(category1);
   searchMultipleChannels(prominentIds, q, category1);
