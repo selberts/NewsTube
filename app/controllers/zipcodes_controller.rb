@@ -14,11 +14,16 @@ class ZipcodesController < ApplicationController
   def show
   end
 
-  def loaddb
+  def loadzipdb
     Zipcode.import_data(params[:import_csv][:csv].read)
     
-    @zipcodes = Zipcode.all
-    render 'index'
+    redirect_to :action => "index"
+  end
+
+  def resetzipdb
+    Zipcode.delete_all
+    
+    redirect_to :action => "index"
   end
 
   # GET /zipcodes/new
