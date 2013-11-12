@@ -12,13 +12,13 @@ class PagesController < ApplicationController
 
     if (zipcode != nil && zipcode != '')
 
-      zip1 = Zipcode.where(:code => zipcode)
+      zip1 = Zipcode.where(:code => zipcode[0,3])
       if zip1.present?
 
         latLong1 = [zip1[0].lat.to_f, zip1[0].long.to_f]
 
         Channel.where(:category => 'local').each do |channel|
-          zip2 = Zipcode.where(:code => channel.zipcode)
+          zip2 = Zipcode.where(:code => channel.zipcode[0,3])
           if zip2.present?
             latLong2 = [zip2[0].lat.to_f, zip2[0].long.to_f]
 

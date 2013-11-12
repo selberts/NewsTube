@@ -18,6 +18,18 @@ class ChannelsController < ApplicationController
   def iderror
   end
 
+  def loadchanneldb
+    Channel.import_data(params[:import_csv][:csv].read)
+    
+    redirect_to :action => "index"
+  end
+
+  def resetchanneldb
+    Channel.delete_all
+    
+    redirect_to :action => "index"
+  end
+
   # GET /channels/1
   # GET /channels/1.json
   def show

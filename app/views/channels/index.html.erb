@@ -1,7 +1,5 @@
 <%= render 'form' %>
 
-<%= link_to 'Download', channels_path(format: "csv") %>
-
 <h4 style="background:#444;">Local</h4>
 <table>
   <thead>
@@ -86,3 +84,14 @@
     end %>
   </tbody>
 </table>
+
+<br/><br/><br/>
+
+<%= form_for :import_csv, :url => {:action => 'loadchanneldb'}, :html => {:multipart => true} do |f| %>
+  <%= f.file_field :csv %>
+  <%= f.submit 'Upload CSV', :class => 'btn' %>
+<%end%>
+
+<%= link_to 'Download DB', channels_path(format: "csv") %>
+<br/><br/>
+<%= link_to "Delete DB", { :action => "resetchanneldb"}, :confirm => 'Are you sure?'%>

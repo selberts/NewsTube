@@ -80,7 +80,7 @@ function searchMultipleChannelsRecursive(channelList, q, category, videoList) {
        channelId: id,
        part: 'snippet',
        order: 'date',
-       publishedAfter: d,
+       //publishedAfter: d,
        maxResults: 20});
 
     nextRequest.execute(function(response) {
