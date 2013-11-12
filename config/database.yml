@@ -1,0 +1,20 @@
+development:
+  host: localhost
+  adapter: mysql
+  database: rails_dev
+  username: root
+  password: root
+
+test:
+  host: localhost
+  adapter: mysql
+  database: rails_test
+  username: root
+  password: root
+
+production:
+  host: localhost
+  adapter: mysql
+  database: rails_prod
+  username: root
+  password: root
