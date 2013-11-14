@@ -60,11 +60,11 @@ function twitterSearch()
   var category4 = 'twitter';
   displayLoading(category4);
   $('#hiddentwitter').load("/twitter?query=" + q + " #twitterID", function() {
-    var test = gapi.client.youtube.videos.list({
+    var requesttwitter = gapi.client.youtube.videos.list({
       part: 'snippet',
       id: $('#hiddentwitter').html()
        });
-    test.execute(function(response) {
+    requesttwitter.execute(function(response) {
     displayVideos(response.items, category4);
     }); 
   } );
@@ -125,7 +125,21 @@ function displayVideos(videoList, category) {
 function displayNextVideos(videoList, category)
 {
   var numVideosToShow = 20;
-
+  //handle case for twitter
+  if(category == 'twitter'){
+    $.each(videoList.slice(0,Math.min(numVideosToShow,videoList.length)), function(index, video)
+  {
+    var date = new Date(video.snippet.publishedAt);
+    displayVideo( video.snippet.channelTitle,
+                  date.toDateString(),
+                  video.id,
+                  video.snippet.thumbnails.medium.url,
+                  video.snippet.title,
+                  category);
+  });
+  }
+  //handle case for rest of the categories
+  else{
   $.each(videoList.slice(0,Math.min(numVideosToShow,videoList.length)), function(index, video)
   {
     var date = new Date(video.snippet.publishedAt);
@@ -136,7 +150,7 @@ function displayNextVideos(videoList, category)
                   video.snippet.title,
                   category);
   });
-
+  }
   if (videoList.length > numVideosToShow)
   {
 
