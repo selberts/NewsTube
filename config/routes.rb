@@ -11,7 +11,7 @@ NewsTube::Application.routes.draw do
   get "/resetzipdb" => "zipcodes#resetzipdb"
   post "/loadchanneldb" => "channels#loadchanneldb"
   get "/resetchanneldb" => "channels#resetchanneldb"
-
+  get "/twitter" => "pages#twitter"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

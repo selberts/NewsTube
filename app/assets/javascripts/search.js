@@ -33,10 +33,8 @@ function searchWithIds(prominentIds, advocacyIds){
   });
 
   //Twitter
-  var category4 = 'twitter';
-  displayLoading(category4);
-  displayVideos([], category4);
-
+  twitterSearch();
+  
   //Advocacy
   var category5 = 'advocacy';
   displayLoading(category5);
@@ -55,6 +53,25 @@ function searchLocal()
     searchMultipleChannels(JSON.parse($('#localChannelIds').html()), q, category2);
   });
 }
+
+function twitterSearch()
+{
+  var q = $('#query').val();
+  var category4 = 'twitter';
+  displayLoading(category4);
+  $('#hiddentwitter').load("/twitter?query=" + q + " #twitterID", function() {
+    alert($('#hiddentwitter').html());
+    var test = gapi.client.youtube.videos.list({
+      part: 'snippet',
+      id: $('#hiddentwitter').html()
+       });
+    test.execute(function(response) {
+    displayVideos(response.items, category4);
+    }); 
+  } );
+}
+
+
 
 function searchMultipleChannels(channelList, q, category) {
   searchMultipleChannelsRecursive(channelList, q, category, []);
