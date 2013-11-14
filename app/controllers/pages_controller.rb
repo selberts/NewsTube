@@ -47,12 +47,11 @@ class PagesController < ApplicationController
       config.oauth_token_secret = 'rVRqjYtBSLWEtX1aZrqa9P21CAMk92GfUsCC1wL8PY7Ht'
     end
     query = params[:query] 
-
-    searcharr = Twitter.search(query + " youtube -rt", :count => 15, :result_type => "recent").results.map do |status|
+    searcharr = Twitter.search(query +" youtube -rt", :count => 40, :result_type => "recent").results.map do |status|
       "#{status.full_text}"
     end
   
-    arr = Array.new(searcharr.length-1)
+    arr = Array.new
     for $i in 0..searcharr.length-1
       array= searcharr[$i].split(" ")
       link=array.grep(/http/)
@@ -68,14 +67,9 @@ class PagesController < ApplicationController
         if arr[$i][$j] ==nil
           next
         end 
-        if arr[$i][$j].start_with?('http') == true
+
+        if arr[$i][$j].include?('t.co') == true and arr[$i][$j].start_with?('http')==true
           string = arr[$i][$j]
-          if string.start_with?('http://www.youtube')
-            newstring= string[31..41]
-            id[$idcount]=newstring
-            $idcount+=1
-            next
-          end
           if string.start_with?('https') == true
             newstring = string[0..22]
           else  
@@ -95,13 +89,17 @@ class PagesController < ApplicationController
       newstring = final[$count]
           if newstring.start_with?('http://www.youtube')
             newstring= newstring[31..41]
-            id[$idcount]=newstring
-            $idcount+=1
+            if id.include?(newstring) == false
+              id[$idcount]=newstring
+              $idcount+=1
+            end
             next
           elsif newstring.start_with?('https://www.youtube')
             newstring=newstring[32..42]
-            id[$idcount]=newstring
-            $idcount+=1
+            if id.include?(newstring) == false
+              id[$idcount]=newstring
+              $idcount+=1
+            end
             next
           end
     newstring = Net::HTTP.get_response(URI.parse(final[$count]))['location']
@@ -117,13 +115,17 @@ class PagesController < ApplicationController
       newstring = extended[$count]
           if newstring.start_with?('http://www.youtube')
             newstring= newstring[31..41]
+            if id.include?(newstring) == false
             id[$idcount]=newstring
             $idcount+=1
+            end
             next
           elsif newstring.start_with?('https://www.youtube')
             newstring=newstring[32..42]
+            if id.include?(newstring) == false
             id[$idcount]=newstring
             $idcount+=1
+            end
             next
           end
     newstring = Net::HTTP.get_response(URI.parse(extended[$count]))['location']
@@ -138,18 +140,23 @@ class PagesController < ApplicationController
       newstring = extended2[$count]
           if newstring.start_with?('http://www.youtube')
             newstring= newstring[31..41]
+            if id.include?(newstring) == false
             id[$idcount]=newstring
             $idcount+=1
+            end
             next
           elsif newstring.start_with?('https://www.youtube')
             newstring=newstring[32..42]
+            if id.include?(newstring) == false
             id[$idcount]=newstring
             $idcount+=1
+            end
             next
           end
     newstring = Net::HTTP.get_response(URI.parse(extended2[$count]))['location']
     extended3[$count]= newstring
     end
+
     idstring = id[1]
     for $count in 2..id.length-1
       idstring = idstring + "," + id[$count];

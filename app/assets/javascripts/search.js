@@ -59,15 +59,19 @@ function twitterSearch()
   var q = $('#query').val();
   var category4 = 'twitter';
   displayLoading(category4);
-  $('#hiddentwitter').load("/twitter?query=" + q + " #twitterID", function() {
+  q =encodeURIComponent(q);
+  alert(q);
+  $('#hiddentwitter').load("/twitter?query="+ q +" #twitterID", function() {
+    var str = ($('#twitterID').html());
     var requesttwitter = gapi.client.youtube.videos.list({
       part: 'snippet',
-      id: $('#hiddentwitter').html()
+      id: str
        });
     requesttwitter.execute(function(response) {
     displayVideos(response.items, category4);
     }); 
   } );
+
 }
 
 
