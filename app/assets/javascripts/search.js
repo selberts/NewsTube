@@ -60,7 +60,6 @@ function twitterSearch()
   var category4 = 'twitter';
   displayLoading(category4);
   q =encodeURIComponent(q);
-  alert(q);
   $('#hiddentwitter').load("/twitter?query="+ q +" #twitterID", function() {
     var str = ($('#twitterID').html());
     var requesttwitter = gapi.client.youtube.videos.list({
