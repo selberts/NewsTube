@@ -82,18 +82,13 @@ function searchMultipleChannels(channelList, q, category) {
 function searchMultipleChannelsRecursive(channelList, q, category, videoList) {
   if (channelList.length < 1)
   {
-    videoList.sort(function(a,b){
-      a = new Date(a.snippet.publishedAt);
-      b = new Date(b.snippet.publishedAt);
-      return b-a;
-    });
 
-    displayVideos(videoList, category)
+    displayVideos(videoList, category);
 
   } else {  
      var id = channelList.pop();
-     var d = new Date();
-     d.setFullYear(d.getFullYear() - 1);
+     //var d = new Date();
+     //d.setFullYear(d.getFullYear() - 1);
      var nextRequest = gapi.client.youtube.search.list({
        q: q,
        channelId: id,
@@ -120,6 +115,12 @@ function displayVideos(videoList, category) {
   }
   else
   {
+    videoList.sort(function(a,b){
+      a = new Date(a.snippet.publishedAt);
+      b = new Date(b.snippet.publishedAt);
+      return b-a;
+    });
+
     $('#' + category).html('');
     displayNextVideos(videoList, category);
   }
