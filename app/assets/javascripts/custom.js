@@ -26,9 +26,17 @@ function displayLoading(category)
 
 function openCategories()
 {
-	$('.categories').fadeIn('slow');
+	var isOnLandingPage = $('#landingPage').val();
+	if (isOnLandingPage == 'true')
+	{
+		$('.categories').fadeIn('slow');
 
-	$( ".header" ).animate({
-	    marginTop: 0
-	  }, 'slow');
+		$( ".header" ).animate({
+		    marginTop: 0
+		  }, 'slow');
+
+		toggleCategory('prominent');
+
+		$('#landingPage').val('false');
+	}
 }
