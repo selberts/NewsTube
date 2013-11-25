@@ -172,8 +172,8 @@ function displayNextVideos(videoList, category)
 function displayVideo(channel, time, videoId, imgUrl, title, category)
 {
   var video = $("<div>", {class: "vid"});
-  video.append($("<span>", {style: 'float:left', text: channel}));
-  video.append($("<span>", {style: 'float:right', text: time}));
+  video.append($("<div>", {class: 'videoChannelName', title: channel, text: channel}));
+  video.append($("<div>", {class: 'videoDate', text: time}));
 
   var link = $("<a>", {href: "http://www.youtube.com/watch?v=" + videoId});
   link.append($("<img>", {src: imgUrl}));
