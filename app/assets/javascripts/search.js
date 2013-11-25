@@ -46,12 +46,20 @@ function searchWithIds(prominentIds, advocacyIds){
 function searchLocal()
 {
   var q = $('#query').val();
+  var category2 = 'local';    
 
-  var category2 = 'local';
-  displayLoading(category2);
-  $('#hiddenLocalHelper').load( "/localchannels?zipcode=" + $('#zipcode').val() + " #localChannelIds", function() {
-    searchMultipleChannels(JSON.parse($('#localChannelIds').html()), q, category2);
-  });
+  var zipcode = $('#zipcode').val();
+  if (zipcode == '')
+  {
+    $('#' + category2).html('<h4>Enter a zipcode to search</h4>');
+  }
+  else
+  {
+    displayLoading(category2);
+    $('#hiddenLocalHelper').load( "/localchannels?zipcode=" + $('#zipcode').val() + " #localChannelIds", function() {
+      searchMultipleChannels(JSON.parse($('#localChannelIds').html()), q, category2);
+    });
+  }
 }
 
 function twitterSearch()
