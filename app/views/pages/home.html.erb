@@ -1,17 +1,27 @@
 <html>
 	<head>
     	<script src="https://apis.google.com/js/client.js?onload=onClientLoad" type="text/javascript"></script>
+   	  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
     	<script type="text/javascript">
     	function search()
     	{
     		searchWithIds(<%= @prominentIds.to_json.html_safe %>, <%= @advocacyIds.to_json.html_safe %>);
+    	}
+    	function move()
+    	{
+   		 $( ".title" ).animate({fontSize:"50px"},1500);
+   		 $(".headerImg").animate({height:0},300);
+   		 $(".tagLine").delay(300).queue( function(next){$(this).css('display','inline-block');next();});
+   		 $(".header").animate({borderLeftWidth: "200px"},1500);
+
     	}
     	</script>
 	</head>
 	<body onload="initSearch()">
 		<input type="hidden" id="landingPage" value="true"/>
 		<div class="header">
-			<a class="title" href="home">NewsTube</a>
+			<a class="title",id="title1", href="home">NewsTube</a>
 			<span class="tagLine">a better news video search</span>
 			<div>
 				<img class="headerImg" src="assets/andersonCooperColor.png"/>
@@ -19,8 +29,9 @@
 				<img class="headerImg" src="assets/videographerColor.png"/>
 			</div>
 			
-			<input id="query" class="search" type="text" placeholder="Search" />
-		    <btn class="btn" onclick="search()">Go!</btn></label>
+			<form action="javascript:move();"><input id="query" class="search" type="text" placeholder="Search" />
+				<btn class="btn" onclick="search();move();">Go!</btn></label>
+			</form>
 		</div>
 		
 		<div class="categories">
