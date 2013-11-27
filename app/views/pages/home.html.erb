@@ -8,11 +8,10 @@
     	}
     	function move()
     	{
-   		 $( ".title" ).animate({fontSize:"50px"},1500);
+   		 $(".title").animate({fontSize:"50px"},1500);
    		 $(".headerImg").animate({height:0},300);
    		 $(".tagLine").delay(300).queue( function(next){$(this).css('display','inline-block');next();});
    		 $(".header").animate({borderLeftWidth: "200px"},1500);
-
     	}
     	</script>
 	</head>
@@ -36,6 +35,7 @@
 			<div class="category" onclick="toggleCategory('prominent')">MEDIA SOURCES</div>
 			<div id="prominentTriWrapper" class="triangleWrapper">
 				<div class="triangle"></div>
+				<div class="description">Videos from Prominent International News Sites</div>
 			</div>
 			<div id="prominentWrapper" class="videoListWrapper">
 				<div id="prominent" class="videoList">
@@ -45,6 +45,7 @@
 			<div class="category" onclick="toggleCategory('local')">LOCAL</div>
 			<div id="localTriWrapper" class="triangleWrapper">
 				<div class="triangle"></div>
+				<div class="description">Videos from local TV News Stations</div>
 				<div class="zipcodeform">
 					<h4 class="zipcodelabel">ZIP Code: </h4>
 					<input id="zipcode" type="text" />
@@ -60,6 +61,7 @@
 			<div class="category" onclick="toggleCategory('documentary')">DOCUMENTARY</div>
 			<div id="documentaryTriWrapper" class="triangleWrapper">
 				<div class="triangle"></div>
+				<div class="description">Documentary video</div>
 			</div>
 			<div id="documentaryWrapper" class="videoListWrapper">
 				<div id="documentary" class="videoList">
@@ -69,6 +71,7 @@
 			<div class="category" onclick="toggleCategory('twitter')">TWITTER</div>
 			<div id="twitterTriWrapper" class="triangleWrapper">
 				<div class="triangle"></div>
+				<div class="description">Videos that are trending on twitter</div>
 			</div>
 			<div id="twitterWrapper" class="videoListWrapper">
 				<div id="twitter" class="videoList">
@@ -79,6 +82,7 @@
 			<div class="category" onclick="toggleCategory('advocacy')">ADVOCACY</div>
 			<div id="advocacyTriWrapper" class="triangleWrapper">
 				<div class="triangle"></div>
+				<div class="description">Videos made by advocacy groups</div>
 			</div>
 			<div id="advocacyWrapper" class="videoListWrapper">
 				<div id="advocacy" class="videoList">
