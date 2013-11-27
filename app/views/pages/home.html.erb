@@ -6,29 +6,27 @@
     	{
     		searchWithIds(<%= @prominentIds.to_json.html_safe %>, <%= @advocacyIds.to_json.html_safe %>);
     	}
-    	function move()
-    	{
-   		 $(".title").animate({fontSize:"50px"},1500);
-   		 $(".headerImg").animate({height:0},300);
-   		 $(".tagLine").delay(300).queue( function(next){$(this).css('display','inline-block');next();});
-   		 $(".header").animate({borderLeftWidth: "200px"},1500);
-    	}
     	</script>
 	</head>
-	<body onload="initSearch()">
+	<body onload="initSearch()" style="padding:0px">
 		<input type="hidden" id="landingPage" value="true"/>
 		<div class="header">
-			<a class="title", href="home">NewsTube</a>
-			<span class="tagLine">a better news video search</span>
-			<div>
-				<img class="headerImg" src="assets/andersonCooperColor.png"/>
-				<img class="headerImg" src="assets/handsColor.png"/>
-				<img class="headerImg" src="assets/videographerColor.png"/>
+			<div id="headerContents">
+				<div class="logo">
+					<a class="title", href="home">NewsTube</a>
+					<span class="tagLine">a better news video search</span>
+				</div>
+				<div id="headerImages">
+					<img class="headerImg" src="assets/andersonCooperColor.png"/>
+					<img class="headerImg" src="assets/handsColor.png"/>
+					<img class="headerImg" src="assets/videographerColor.png"/>
+				</div>
+				
+				<form class="queryForm" action="javascript:search()">
+					<input id="query" class="search" type="text" placeholder="Search" />
+					<button class="btn">Go!</button>
+				</form>
 			</div>
-			
-			<form action="javascript:move();"><input id="query" class="search" type="text" placeholder="Search" />
-				<btn class="btn" onclick="search();move();">Go!</btn></label>
-			</form>
 		</div>
 		
 		<div class="categories">
@@ -46,11 +44,11 @@
 			<div id="localTriWrapper" class="triangleWrapper">
 				<div class="triangle"></div>
 				<div class="description">Videos from local TV News Stations</div>
-				<div class="zipcodeform">
+				<form action="javascript:searchLocal()" class="zipcodeform">
 					<h4 class="zipcodelabel">ZIP Code: </h4>
 					<input id="zipcode" type="text" />
-					<btn class="btn zipcodebtn" onclick="searchLocal()">Update</btn>
-				</div>
+					<button class="btn zipcodebtn">Update</button>
+				</form>
 			</div>
 			<div id="localWrapper" class="videoListWrapper">
 				<div id="local" class="videoList">

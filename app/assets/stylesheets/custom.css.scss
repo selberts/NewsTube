@@ -26,10 +26,18 @@ td {
 	margin-bottom: 30px;
 	font-weight:bold;
 	min-width: 500px;
+	padding-top: 20px;
+}
+
+.logo {
+}
+
+.queryForm {
 }
 
 .title {
 	font-size: 85px;
+	line-height: 85px;
 	color: white;
 }
 
@@ -37,6 +45,7 @@ td {
 	display: block;
 	font-size: 23px;
 	margin: 15px 0px;
+	white-space: nowrap;
 }
 
 .title:hover {
@@ -149,12 +158,11 @@ td {
 }
 
 .zipcodebtn {
-	width: 53px;
 	margin-left: 8px;
 }
 
 .zipcodeform {
-	margin-top: 5px;
+	margin-bottom:0px;
 	padding-bottom: 15px;
 }
 
@@ -166,5 +174,7 @@ td {
 .description {
 	font-size:20px;
 	margin-top: -10px;
+	padding-bottom: 10px;
 	font-weight:bold;
+	white-space: nowrap;
 }

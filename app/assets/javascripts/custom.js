@@ -1,10 +1,4 @@
 function initSearch() {
-	$("#query").keyup(function (e) {
-		if (e.keyCode == 13) {
-	    	search();
-		}
-	});
-
 	$.get( 'http://freegeoip.net/json', function( data ) {
       if (data.zipcode != "undefined" && data.zipcode != "")
       {
@@ -29,14 +23,55 @@ function openCategories()
 	var isOnLandingPage = $('#landingPage').val();
 	if (isOnLandingPage == 'true')
 	{
-		$('.categories').fadeIn('slow');
-
 		$( ".header" ).animate({
-		    marginTop: 0
-		  }, 'slow');
+		    marginTop: 0,
+		    height: '100px',
+		    borderLeftWidth: "200px"
+		  }, 1500);
+
+		$( "#headerContents").fadeOut('slow');
+		$( "#headerContents").queue(function() {
+			adjustHeaderCSS();
+			$( this ).dequeue();
+		})
+		$("#headerContents").fadeIn('slow');
+
+		$('.categories').fadeIn('slow');
 
 		toggleCategory('prominent');
 
 		$('#landingPage').val('false');
 	}
+}
+
+function adjustHeaderCSS()
+{
+	$(".title").css({
+	 	fontSize:"50px",
+	 	lineHeight: "50px"
+	 });
+
+	$(".logo").css({
+		position: 'absolute',
+		textAlign: "left",
+		left: "20px"
+	});
+
+	$("#headerImages").css({
+		display: 'none'
+	});
+
+	$(".queryForm").css({
+		display: "inline-block",
+		width: "360px",
+		textAlign: "center",
+		verticalAlign: "top",
+		marginTop: "30px",
+		marginLeft: "360px",
+		marginRight: "360px" 		 
+	});
+
+	$(".header").css({
+		marginBottom: "0px"
+	});
 }
