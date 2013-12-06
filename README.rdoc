@@ -17,4 +17,4 @@ are also used to store the zipcodes and channels. Adding more channels can be do
 
 ==Local Development 			
 In order to see result locally, you can go to localhost:3000/channels and upload the zipcode.csv and channels.csv in the main folder of this 
-repository. By uploading it the you should be able to see search results locally in the media source, local and advocacy categories. 
+repository. By uploading them, you should be able to see search results locally in the media source, local and advocacy categories. 
