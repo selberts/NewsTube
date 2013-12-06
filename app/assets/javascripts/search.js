@@ -3,7 +3,7 @@ function onClientLoad() {
 }
 
 function onYouTubeApiLoad() {
-   gapi.client.setApiKey('AIzaSyAFxd-832oMCK_33cqsRBBoh7EdYHzV2oM');
+   gapi.client.setApiKey('AIzaSyAFxd-832oMCK_33cqsRBBoh7EdYHzV2oM'); //Change to your own Youtube API key here
 }
 
 function searchWithIds(prominentIds, advocacyIds){  
