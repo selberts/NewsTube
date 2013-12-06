@@ -39,7 +39,7 @@ class PagesController < ApplicationController
   end
 
   def twitter
-
+      #please use your own api keys here 
     Twitter.configure do |config|
       config.consumer_key = 'tJO12Hz2jQGHYEZZNWuEg'
       config.consumer_secret = 'u6izuQhp6e27MYAF8HeNMttZIClDlynD15nEUwrHSE'
