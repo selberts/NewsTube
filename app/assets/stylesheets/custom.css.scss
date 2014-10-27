@@ -4,7 +4,14 @@
 	font-family: 'StMarie-Thin'; 
 	src: font-url('StMarie-Thin.otf');
 }
-
+head {
+	padding: 0px 0px;
+	font-family: 'StMarie-Thin';
+	text-align: left;
+	margin-left: -100px;
+	background-color: black;
+	color: white;
+}
 body { 
 	padding: 50px 0px;
 	font-family: 'StMarie-Thin';
@@ -23,6 +30,14 @@ td {
 
 .header {
 	margin-top: 150px;
+	margin-bottom: 30px;
+	font-weight:bold;
+	min-width: 500px;
+	padding-top: 20px;
+}
+
+.header2 {
+	margin-top: 10px;
 	margin-bottom: 30px;
 	font-weight:bold;
 	min-width: 500px;
@@ -170,6 +185,26 @@ td {
 .zipcodelabel {
 	display: inline-block;
 	vertical-align: middle;
+}
+.embed-container {
+  position: relative;
+  left: 25%;
+  padding-bottom: 56.25%;
+  padding-top: 30px;
+  height: 0;
+  overflow: hidden;
+  width: 100%;
+  height: auto;
+  margin-bottom: 12px;
+} 
+
+.embed-container iframe,
+.embed-container object,
+.embed-container embed {
+  position: absolute;
+  top: 0; left: 0;
+  width: 50%;
+  height: 50%;
 }
 
 .description {

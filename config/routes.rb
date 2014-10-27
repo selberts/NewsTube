@@ -7,6 +7,7 @@ NewsTube::Application.routes.draw do
   root to: 'pages#home'
   get "home" => "pages#home"
   get "localchannels" => "pages#localchannels"
+  get "test" => "pages#test"
   post "/loadzipdb" => "zipcodes#loadzipdb"
   get "/resetzipdb" => "zipcodes#resetzipdb"
   post "/loadchanneldb" => "channels#loadchanneldb"
